@@ -1,0 +1,20 @@
+package com.library;
+
+import com.library.service.BookService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+    public static void main(String[] args) {
+    	
+    	System.out.println("Modified the appliaction.xml to inject setter");
+    	System.out.println();
+    	
+        ApplicationContext context = 
+            new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        BookService bookService = context.getBean("bookService", BookService.class);
+        bookService.displayBooks(); // Should work if DI was successful
+        
+    }
+}
